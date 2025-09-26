@@ -118,7 +118,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="Password - Restarter&#xA;by, Subhadip Maity&#xA;&#xA;" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="959.2,698.4" sap2010:WorkflowViewState.IdRef="StateMachine_1">
+  <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="Multi Documents Loan Process Dispature&#xA;by, Subhadip Maity&#xA;&#xA;" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="959.2,698.4" sap2010:WorkflowViewState.IdRef="StateMachine_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -267,7 +267,7 @@
         <Transition DisplayName="New Transaction" sap:VirtualizedContainerService.HintSize="448.8,522.4" sap2010:WorkflowViewState.IdRef="Transition_6">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <av:PointCollection x:Key="ConnectorLocation">659.4,323.8 659.4,357.02 660,357.02 660,385</av:PointCollection>
+              <av:PointCollection x:Key="ConnectorLocation">659.4,324.6 659.4,354.6 660,354.6 660,385</av:PointCollection>
               <x:Int32 x:Key="SrcConnectionPointIndex">39</x:Int32>
               <x:Int32 x:Key="DestConnectionPointIndex">38</x:Int32>
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -524,7 +524,7 @@
                 <Transition sap2010:Annotation.AnnotationText="There is no need for any action in case of successful transaction.&#xA;The process should simply go to next transaction." DisplayName="Success" sap:VirtualizedContainerService.HintSize="535.2,534.4" sap2010:WorkflowViewState.IdRef="Transition_5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                      <av:PointCollection x:Key="ConnectorLocation">780,460.84000000000003 810,460.84000000000003 810,291.16 773.8,291.16</av:PointCollection>
+                      <av:PointCollection x:Key="ConnectorLocation">780,461.8 810,461.8 810,291.72 773.8,291.72</av:PointCollection>
                       <x:Int32 x:Key="SrcConnectionPointIndex">28</x:Int32>
                       <x:Int32 x:Key="DestConnectionPointIndex">52</x:Int32>
                       <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
