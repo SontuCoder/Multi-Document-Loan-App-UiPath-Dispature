@@ -4,11 +4,16 @@
   "description": "",
   "main": "Main.xaml",
   "dependencies": {
-    "UiPath.Excel.Activities": "[3.1.2]",
+    "UiPath.DocumentUnderstanding.ML.Activities": "[1.35.0]",
+    "UiPath.Excel.Activities": "[3.2.1]",
+    "UiPath.FormActivityLibrary": "[2.0.8]",
+    "UiPath.IntelligentOCR.Activities": "[6.26.0]",
     "UiPath.Mail.Activities": "[2.4.10]",
+    "UiPath.OmniPage.Activities": "[1.21.0]",
+    "UiPath.Persistence.Activities": "[1.7.2]",
     "UiPath.System.Activities": "[25.8.1]",
-    "UiPath.UIAutomation.Activities": "[25.10.13]",
-    "UiPath.WebAPI.Activities": "[1.21.1]"
+    "UiPath.UIAutomation.Activities": "[25.10.12]",
+    "UiPath.WebAPI.Activities": "[1.20.1]"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -37,6 +42,7 @@
     "projectProfile": "Developement",
     "outputType": "Process",
     "libraryOptions": {
+      "includeOriginalXaml": false,
       "privateWorkflows": []
     },
     "processOptions": {
