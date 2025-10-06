@@ -1,0 +1,541 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="_20_a_TaskMaking" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:njl="clr-namespace:Newtonsoft.Json.Linq;assembly=Newtonsoft.Json" xmlns:p="http://schemas.uipath.com/workflow/activities/intelligentocr" xmlns:p1="http://schemas.uipath.com/workflow/activities/intelligentocr/classification" xmlns:p2="http://schemas.uipath.com/workflow/activities/document-processing-contracts/classification" xmlns:p3="http://schemas.uipath.com/workflow/activities/document-processing-contracts/dom" xmlns:p4="http://schemas.uipath.com/workflow/activities/intelligentocr/extraction" xmlns:p5="http://schemas.uipath.com/workflow/activities/documentunderstanding-ml" xmlns:p6="http://schemas.uipath.com/workflow/activities/document-processing-contracts/extraction" xmlns:p7="http://schemas.uipath.com/workflow/activities/document-processing-contracts/results" xmlns:p8="http://schemas.uipath.com/workflow/activities/document-processing-contracts/taxonomy" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Drawing;assembly=System.Drawing.Common" xmlns:sd1="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives" xmlns:si="clr-namespace:System.IO;assembly=System.Private.CoreLib" xmlns:snm="clr-namespace:System.Net.Mail;assembly=System.Net.Mail" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uoa="clr-namespace:UiPath.OmniPage.Activities;assembly=UiPath.OmniPage.Activities" xmlns:upat="clr-namespace:UiPath.Persistence.Activities.Tasks;assembly=UiPath.Persistence.Activities" xmlns:uwaj="clr-namespace:UiPath.Web.Activities.JSON;assembly=UiPath.Web.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="idictAssets" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+    <x:Property Name="imailMessage" Type="InArgument(snm:MailMessage)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap2010:WorkflowViewState.IdRef>_20_a_TaskMaking_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Taxonomy</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.TaxonomyManagement</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.Digitization</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Dom</x:String>
+      <x:String>UiPath.Vision.OCR</x:String>
+      <x:String>UiPath.OCR.Contracts</x:String>
+      <x:String>UiPath.OCR.Activities</x:String>
+      <x:String>UiPath.OCR.Contracts.Activities</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts</x:String>
+      <x:String>UiPath.Vision.OmniPage.Core</x:String>
+      <x:String>UiPath.OmniPage.Activities</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Results</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.DocumentClassification</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Classification</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Training</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.Training</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.DataExtraction</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.DataExtraction</x:String>
+      <x:String>UiPath.DU.Shared.Utils</x:String>
+      <x:String>UiPath.DocumentUnderstanding.ML.Activities</x:String>
+      <x:String>UiPath.DU.Shared.Actions</x:String>
+      <x:String>UiPath.DocumentProcessing.Contracts.Actions</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities</x:String>
+      <x:String>UiPath.IntelligentOCR.Activities.Actions</x:String>
+      <x:String>UiPath.Persistence.Activities.Tasks</x:String>
+      <x:String>UiPath.Persistence.Activities.Model.Task</x:String>
+      <x:String>UiPath.Persistence.Activities</x:String>
+      <x:String>Newtonsoft.Json.Linq</x:String>
+      <x:String>Newtonsoft.Json</x:String>
+      <x:String>System.Dynamic</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Collections.Specialized</x:String>
+      <x:String>UiPath.Web.Activities</x:String>
+      <x:String>UiPath.Web.Activities.JSON.Models</x:String>
+      <x:String>UiPath.Web.Activities.JSON</x:String>
+      <x:String>UiPath.Sdk.Activities</x:String>
+      <x:String>UiPath.Sdk.Activities.DependencyInjection</x:String>
+      <x:String>UiPath.Sdk.Activities.DependencyInjection.Contracts</x:String>
+      <x:String>System.Numerics</x:String>
+      <x:String>System.Activities.Runtime.Collections</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Drawing.Common</AssemblyReference>
+      <AssemblyReference>System.Drawing.Primitives</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Web.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Linq.Async</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentProcessing.Contracts</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OmniPage.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Persistence.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Linq.Expressions</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.OmniPage.Core</AssemblyReference>
+      <AssemblyReference>UiPath.Vision.Core</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Contracts</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.Watcher</AssemblyReference>
+      <AssemblyReference>System.IO.Packaging</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.AccessControl</AssemblyReference>
+      <AssemblyReference>System.IO.FileSystem.DriveInfo</AssemblyReference>
+      <AssemblyReference>NPOI.Core</AssemblyReference>
+      <AssemblyReference>System.Collections.NonGeneric</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.DocumentUnderstanding.ML.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.IntelligentOCR</AssemblyReference>
+      <AssemblyReference>netstandard</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Collections.Specialized</AssemblyReference>
+      <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="_20_a_TaskMaking" sap:VirtualizedContainerService.HintSize="908.8000000000001,658.84" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="p8:DocumentTaxonomy" Name="taxonomy" />
+      <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dictQueueData" />
+      <Variable x:TypeArguments="x:String" Name="strQueueData" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <TryCatch DisplayName="20.a Try Catch - Handle Task creating" sap:VirtualizedContainerService.HintSize="456,488.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+      <TryCatch.Try>
+        <Sequence DisplayName="20.a Make task for all Documents" sap:VirtualizedContainerService.HintSize="416,392" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <p:LoadTaxonomy DisplayName="20.a Load Taxonomy" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="LoadTaxonomy_1" Taxonomy="[taxonomy]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </p:LoadTaxonomy>
+          <Assign DisplayName="20.a Assign - Queue Data" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign.To>
+              <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dictQueueData]</OutArgument>
+            </Assign.To>
+            <Assign.Value>
+              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[new Dictionary(of String, String)from{{"Mail Id","NA"},{"Aadhar","NA"},{"PAN","NA"},{"Salary Form","NA"},{"Loan Aplication","NA"}}]</InArgument>
+            </Assign.Value>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </Assign>
+          <ui:ForEachFileX DisplayName="20.a For Each File in Folder - Make task" Folder="[idictAssets(&quot;Temp Folder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+            <ui:ForEachFileX.Body>
+              <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
+                <ActivityAction.Argument1>
+                  <DelegateInArgument x:TypeArguments="si:FileInfo" Name="CurrentFile" />
+                </ActivityAction.Argument1>
+                <ActivityAction.Argument2>
+                  <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
+                </ActivityAction.Argument2>
+                <Sequence DisplayName="20.a Make Task for each Documents" sap:VirtualizedContainerService.HintSize="416,651.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="p3:Document" Name="DOM" />
+                    <Variable x:TypeArguments="x:String" Name="strDocText" />
+                    <Variable x:TypeArguments="p7:ClassificationResult[]" Name="arrclassificationResult" />
+                    <Variable x:TypeArguments="p7:ExtractionResult" Name="extractedResult" />
+                    <Variable x:TypeArguments="p:DocumentValidationActionData" Name="action" />
+                    <Variable x:TypeArguments="njl:JObject" Name="jobjActionResult" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <p:DigitizeDocument ApplyOcrMigrated="True" ApplyOcrOnPdf="Auto" DegreeOfParallelism="-1" DetectCheckboxes="True" DisplayName="20.a Digitize Currect Document" DocumentObjectModel="[DOM]" DocumentPath="[CurrentFile.FullName]" DocumentText="[strDocText]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="DigitizeDocument_1">
+                    <p:DigitizeDocument.OCREngine>
+                      <ActivityFunc x:TypeArguments="sd:Image, x:String, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
+                        <ActivityFunc.Argument1>
+                          <DelegateInArgument x:TypeArguments="sd:Image" Name="Image" />
+                        </ActivityFunc.Argument1>
+                        <ActivityFunc.Argument2>
+                          <DelegateInArgument x:TypeArguments="x:String" Name="PredictionId" />
+                        </ActivityFunc.Argument2>
+                        <uoa:OmniPageOCR Language="{x:Null}" Output="{x:Null}" Profile="{x:Null}" Scale="{x:Null}" Text="{x:Null}" BundleType="Basic" ComputeSkewAngle="False" DisplayName="20.a OmniPage OCR" ExtractHandprintedText="False" ExtractWords="True" sap:VirtualizedContainerService.HintSize="312,24.8" sap2010:WorkflowViewState.IdRef="OmniPageOCR_1" Image="[Image]" NoopExecution="False" PredictionId="[PredictionId]" />
+                      </ActivityFunc>
+                    </p:DigitizeDocument.OCREngine>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </p:DigitizeDocument>
+                  <p1:ClassifyDocumentScope ClassificationResults="[arrclassificationResult]" DisplayName="20.a Classify Document Scope for Current Document" DocumentObjectModel="[DOM]" DocumentPath="[CurrentFile.FullName]" DocumentText="[strDocText]" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="ClassifyDocumentScope_1" Taxonomy="[taxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UI257f3a12998d421e8d4bcd2449ab6106&quot;:{&quot;DocumentTypeMappings&quot;:{}}},&quot;ClassifierMinimumConfidence&quot;:{&quot;UI257f3a12998d421e8d4bcd2449ab6106&quot;:&quot;90&quot;},&quot;DocumentTypesByPersistenceId&quot;:{&quot;UI257f3a12998d421e8d4bcd2449ab6106&quot;:[]}}">
+                    <p1:ClassifyDocumentScope.Classifiers>
+                      <p1:KeywordBasedClassifier HumanValidatedData="{x:Null}" LearningData="{x:Null}" OriginalDocumentObjectModel="{x:Null}" OriginalDocumentPath="{x:Null}" OriginalDocumentText="{x:Null}" DisplayName="20.a Keyword Based Classifier for Classify document type" sap:VirtualizedContainerService.HintSize="281.6,115.2" sap2010:WorkflowViewState.IdRef="KeywordBasedClassifier_1" LearningFilePath="DocumentProcessing\KeywordClassifier.json" PersistenceId="UI257f3a12998d421e8d4bcd2449ab6106">
+                        <p1:KeywordBasedClassifier.ClassifierResult>
+                          <OutArgument x:TypeArguments="p2:ClassifierResult">
+                            <DelegateArgumentReference x:TypeArguments="p2:ClassifierResult">
+                              <DelegateOutArgument x:TypeArguments="p2:ClassifierResult" Name="ClassifierResult" />
+                            </DelegateArgumentReference>
+                          </OutArgument>
+                        </p1:KeywordBasedClassifier.ClassifierResult>
+                        <p1:KeywordBasedClassifier.DocumentObjectModel>
+                          <InArgument x:TypeArguments="p3:Document">
+                            <DelegateArgumentValue x:TypeArguments="p3:Document">
+                              <DelegateInArgument x:TypeArguments="p3:Document" Name="DocumentObjectModel" />
+                            </DelegateArgumentValue>
+                          </InArgument>
+                        </p1:KeywordBasedClassifier.DocumentObjectModel>
+                        <p1:KeywordBasedClassifier.DocumentPath>
+                          <InArgument x:TypeArguments="x:String">
+                            <DelegateArgumentValue x:TypeArguments="x:String">
+                              <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+                            </DelegateArgumentValue>
+                          </InArgument>
+                        </p1:KeywordBasedClassifier.DocumentPath>
+                        <p1:KeywordBasedClassifier.DocumentText>
+                          <InArgument x:TypeArguments="x:String">
+                            <DelegateArgumentValue x:TypeArguments="x:String">
+                              <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+                            </DelegateArgumentValue>
+                          </InArgument>
+                        </p1:KeywordBasedClassifier.DocumentText>
+                        <p1:KeywordBasedClassifier.DocumentTypes>
+                          <InArgument x:TypeArguments="p2:ClassifierDocumentType[]">
+                            <DelegateArgumentValue x:TypeArguments="p2:ClassifierDocumentType[]">
+                              <DelegateInArgument x:TypeArguments="p2:ClassifierDocumentType[]" Name="DocumentTypes" />
+                            </DelegateArgumentValue>
+                          </InArgument>
+                        </p1:KeywordBasedClassifier.DocumentTypes>
+                        <p1:KeywordBasedClassifier.PredictionId>
+                          <InArgument x:TypeArguments="x:String">
+                            <DelegateArgumentValue x:TypeArguments="x:String">
+                              <DelegateInArgument x:TypeArguments="x:String" Name="PredictionId" />
+                            </DelegateArgumentValue>
+                          </InArgument>
+                        </p1:KeywordBasedClassifier.PredictionId>
+                      </p1:KeywordBasedClassifier>
+                    </p1:ClassifyDocumentScope.Classifiers>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </p1:ClassifyDocumentScope>
+                  <p4:DataExtractionScope AvailableAssetPaths="{x:Array Type=x:String}" DocumentTypeId="{x:Null}" RuntimeAssetPath="{x:Null}" RuntimeTenantUrl="{x:Null}" ApplyGenerativeValidation="False" ClassificationResult="[arrclassificationResult(0)]" DisplayName="20.a Data Extraction Scope Extract Document Data Using ML" DocumentObjectModel="[DOM]" DocumentPath="[CurrentFile.FullName]" DocumentText="[strDocText]" ExtractionResult="[extractedResult]" FormatValuesIfPossible="True" GenerativeValidationConfidenceThreshold="99" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="DataExtractionScope_1" Taxonomy="[taxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UI832cef263f7747ed9ae3be9f602bcd65&quot;:{&quot;DocumentTypeMappings&quot;:{}}},&quot;ExtractorMinimumConfidence&quot;:{&quot;UI832cef263f7747ed9ae3be9f602bcd65&quot;:&quot;0&quot;},&quot;ExtractorsAliases&quot;:{},&quot;DocumentTypeOptionsByExtractor&quot;:{&quot;UI832cef263f7747ed9ae3be9f602bcd65&quot;:[{&quot;FieldId&quot;:&quot;&quot;,&quot;SubOptions&quot;:[{&quot;FieldId&quot;:&quot;name&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;vendor-addr&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;billing-name&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;billing-addr&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;shipping-addr&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;invoice-no&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;po-no&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;vendor-vat-no&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;date&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;tax&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;total&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;payment-terms&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;net-amount&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;due-date&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;discount&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;shipping-charges&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;payment-addr&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;billing-vat-no&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;shipping-date&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;vendor-email&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;bank-name&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;bank-account-no&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;iban&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;swift-code&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;bank-addr&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;bank-routing-no&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;tax-rate&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;shipping-method&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;currency&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;items&quot;,&quot;SubOptions&quot;:[{&quot;FieldId&quot;:&quot;description&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;quantity&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;unit-price&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;line-amount&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;item-po-no&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;line-no&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null},{&quot;FieldId&quot;:&quot;part-no&quot;,&quot;SubOptions&quot;:null,&quot;Metadata&quot;:null}],&quot;Metadata&quot;:null}],&quot;Metadata&quot;:[{&quot;Key&quot;:&quot;schema&quot;,&quot;Value&quot;:&quot;{\&quot;api_version\&quot;:\&quot;1.2\&quot;,\&quot;model\&quot;:\&quot;invoices\&quot;,\&quot;release\&quot;:\&quot;ga\&quot;,\&quot;schema\&quot;:{\&quot;classification\&quot;:{\&quot;currency\&quot;:[{\&quot;description\&quot;:\&quot;United States\&quot;,\&quot;name\&quot;:\&quot;USD\&quot;},{\&quot;description\&quot;:\&quot;Europe\&quot;,\&quot;name\&quot;:\&quot;EUR\&quot;},{\&quot;description\&quot;:\&quot;Romania\&quot;,\&quot;name\&quot;:\&quot;RON\&quot;},{\&quot;description\&quot;:\&quot;UK\&quot;,\&quot;name\&quot;:\&quot;GBP\&quot;},{\&quot;description\&quot;:\&quot;India\&quot;,\&quot;name\&quot;:\&quot;INR\&quot;},{\&quot;description\&quot;:\&quot;Canada\&quot;,\&quot;name\&quot;:\&quot;CAD\&quot;},{\&quot;description\&quot;:\&quot;Australia\&quot;,\&quot;name\&quot;:\&quot;AUD\&quot;},{\&quot;description\&quot;:\&quot;Malaysia\&quot;,\&quot;name\&quot;:\&quot;MYR\&quot;},{\&quot;description\&quot;:\&quot;Brazil\&quot;,\&quot;name\&quot;:\&quot;BRL\&quot;},{\&quot;description\&quot;:\&quot;Japan\&quot;,\&quot;name\&quot;:\&quot;JPY\&quot;},{\&quot;description\&quot;:\&quot;Singapore\&quot;,\&quot;name\&quot;:\&quot;SGD\&quot;},{\&quot;description\&quot;:\&quot;Honduras\&quot;,\&quot;name\&quot;:\&quot;HNL\&quot;},{\&quot;description\&quot;:\&quot;Nicaragua\&quot;,\&quot;name\&quot;:\&quot;NIO\&quot;},{\&quot;description\&quot;:\&quot;United Arab Emirates\&quot;,\&quot;name\&quot;:\&quot;AED\&quot;},{\&quot;description\&quot;:\&quot;Hong Kong\&quot;,\&quot;name\&quot;:\&quot;HKD\&quot;},{\&quot;description\&quot;:\&quot;Switzerland\&quot;,\&quot;name\&quot;:\&quot;CHF\&quot;},{\&quot;description\&quot;:\&quot;Algeria\&quot;,\&quot;name\&quot;:\&quot;DZD\&quot;},{\&quot;description\&quot;:\&quot;Sweden\&quot;,\&quot;name\&quot;:\&quot;SEK\&quot;},{\&quot;description\&quot;:\&quot;Norway\&quot;,\&quot;name\&quot;:\&quot;NOK\&quot;},{\&quot;description\&quot;:\&quot;Poland\&quot;,\&quot;name\&quot;:\&quot;PLN\&quot;},{\&quot;description\&quot;:\&quot;Denmark\&quot;,\&quot;name\&quot;:\&quot;DKK\&quot;},{\&quot;description\&quot;:\&quot;New Zeeland\&quot;,\&quot;name\&quot;:\&quot;NZD\&quot;},{\&quot;description\&quot;:\&quot;Serbia\&quot;,\&quot;name\&quot;:\&quot;RSD\&quot;},{\&quot;description\&quot;:\&quot;Saudi Arabia\&quot;,\&quot;name\&quot;:\&quot;SAR\&quot;},{\&quot;description\&quot;:\&quot;South Africa\&quot;,\&quot;name\&quot;:\&quot;ZAR\&quot;}]},\&quot;extraction\&quot;:[{\&quot;color\&quot;:\&quot;#ff0088\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Vendor Name\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;n\&quot;,\&quot;multi_line\&quot;:true,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;name\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;levenshtein\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;color\&quot;:\&quot;#65d642\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Vendor Address\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;v\&quot;,\&quot;multi_line\&quot;:true,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;vendor-addr\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;levenshtein\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;color\&quot;:\&quot;#7f5140\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Billing Name\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;b\&quot;,\&quot;multi_line\&quot;:true,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;billing-name\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;levenshtein\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;color\&quot;:\&quot;#ff8c40\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Billing Address\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;i\&quot;,\&quot;multi_line\&quot;:true,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;billing-addr\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;levenshtein\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;color\&quot;:\&quot;#00bfb3\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Shipping Address\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;s\&quot;,\&quot;multi_line\&quot;:true,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;shipping-addr\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;levenshtein\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;color\&quot;:\&quot;#f2ff40\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Invoice Number\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;o\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;invoice-no\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;color\&quot;:\&quot;#0099bf\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Purchase Order Number\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;p\&quot;,\&quot;multi_line\&quot;:true,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;po-no\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;color\&quot;:\&quot;#40ff8c\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Vendor VAT Number\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;e\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;vendor-vat-no\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;color\&quot;:\&quot;#110040\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Document Date\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;d\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;date\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;date\&quot;},{\&quot;color\&quot;:\&quot;#eabfff\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Tax Amount\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;t\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;tax\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;number\&quot;},{\&quot;color\&quot;:\&quot;#ee00ff\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Total Amount\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;a\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;total\&quot;,\&quot;post_processing\&quot;:\&quot;largest_value\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;number\&quot;},{\&quot;color\&quot;:\&quot;#005581\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Payment Terms\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;y\&quot;,\&quot;multi_line\&quot;:true,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;payment-terms\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;levenshtein\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;color\&quot;:\&quot;#7f2039\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Net Amount\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;-\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;net-amount\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;number\&quot;},{\&quot;color\&quot;:\&quot;#9e78db\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Due Date\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;u\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;due-date\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;date\&quot;},{\&quot;color\&quot;:\&quot;#383040\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Discount Amount\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;c\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;discount\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;number\&quot;},{\&quot;color\&quot;:\&quot;#20403e\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Shipping Charges\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;h\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;shipping-charges\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;number\&quot;},{\&quot;color\&quot;:\&quot;#bfeaff\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Payment Address\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;m\&quot;,\&quot;multi_line\&quot;:true,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;payment-addr\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;levenshtein\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;color\&quot;:\&quot;#bf60b9\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Items - Descriptions\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;1\&quot;,\&quot;multi_line\&quot;:true,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;description\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;levenshtein\&quot;,\&quot;section\&quot;:\&quot;items\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;color\&quot;:\&quot;#401036\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Items - Quantities\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;2\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;quantity\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;section\&quot;:\&quot;items\&quot;,\&quot;split_items\&quot;:true,\&quot;type\&quot;:\&quot;number\&quot;},{\&quot;color\&quot;:\&quot;#ffc480\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Items - Unit Prices\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;3\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;unit-price\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;section\&quot;:\&quot;items\&quot;,\&quot;split_items\&quot;:true,\&quot;type\&quot;:\&quot;number\&quot;},{\&quot;color\&quot;:\&quot;#7f7920\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Items - Line Amounts\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;4\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;line-amount\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;section\&quot;:\&quot;items\&quot;,\&quot;split_items\&quot;:true,\&quot;type\&quot;:\&quot;number\&quot;},{\&quot;color\&quot;:\&quot;#66bf00\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Items - Customer Purchase Order Numbers\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;5\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;item-po-no\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;section\&quot;:\&quot;items\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;color\&quot;:\&quot;#ff0000\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Items - Line Numbers\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;6\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;line-no\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;section\&quot;:\&quot;items\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;color\&quot;:\&quot;#0066ff\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Items - Part Number\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;7\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;part-no\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;section\&quot;:\&quot;items\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;color\&quot;:\&quot;#b1f23e\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Billing VAT Number\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;g\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;billing-vat-no\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;color\&quot;:\&quot;#2d8020\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Shipping Date\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;r\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;shipping-date\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;date\&quot;},{\&quot;color\&quot;:\&quot;#ff0022\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Vendor Email Address\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;w\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;vendor-email\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;levenshtein\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;color\&quot;:\&quot;#403030\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Bank Name\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;z\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;bank-name\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;levenshtein\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;color\&quot;:\&quot;#4400ff\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Bank Account Number\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;x\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;bank-account-no\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;color\&quot;:\&quot;#c79c7a\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Bank IBAN\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;]\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;iban\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;color\&quot;:\&quot;#50c8e9\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;SWIFT Code\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;f\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;swift-code\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;color\&quot;:\&quot;#b6d544\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Bank Address\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;j\&quot;,\&quot;multi_line\&quot;:true,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;bank-addr\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;levenshtein\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;color\&quot;:\&quot;#c8003b\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Bank Routing Number\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;l\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;bank-routing-no\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;color\&quot;:\&quot;#b43252\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Tax Rate\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;k\&quot;,\&quot;multi_line\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;tax-rate\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;exact_match\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;number\&quot;},{\&quot;color\&quot;:\&quot;#b51cff\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;display_name\&quot;:\&quot;Shipping Method\&quot;,\&quot;hidden\&quot;:false,\&quot;hotkey\&quot;:\&quot;,\&quot;,\&quot;multi_line\&quot;:true,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;shipping-method\&quot;,\&quot;post_processing\&quot;:\&quot;first_span\&quot;,\&quot;scoring\&quot;:\&quot;levenshtein\&quot;,\&quot;split_items\&quot;:false,\&quot;type\&quot;:\&quot;string\&quot;}]},\&quot;tags\&quot;:[{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;name\&quot;,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;vendor-addr\&quot;,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;billing-name\&quot;,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;billing-addr\&quot;,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;shipping-addr\&quot;,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;invoice-no\&quot;,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;po-no\&quot;,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;vendor-vat-no\&quot;,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;date\&quot;,\&quot;type\&quot;:\&quot;date\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;tax\&quot;,\&quot;type\&quot;:\&quot;number\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;total\&quot;,\&quot;type\&quot;:\&quot;number\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;payment-terms\&quot;,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;net-amount\&quot;,\&quot;type\&quot;:\&quot;number\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;due-date\&quot;,\&quot;type\&quot;:\&quot;date\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;discount\&quot;,\&quot;type\&quot;:\&quot;number\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;shipping-charges\&quot;,\&quot;type\&quot;:\&quot;number\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;payment-addr\&quot;,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;description\&quot;,\&quot;section\&quot;:\&quot;items\&quot;,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;quantity\&quot;,\&quot;section\&quot;:\&quot;items\&quot;,\&quot;type\&quot;:\&quot;number\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;unit-price\&quot;,\&quot;section\&quot;:\&quot;items\&quot;,\&quot;type\&quot;:\&quot;number\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;line-amount\&quot;,\&quot;section\&quot;:\&quot;items\&quot;,\&quot;type\&quot;:\&quot;number\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;item-po-no\&quot;,\&quot;section\&quot;:\&quot;items\&quot;,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;line-no\&quot;,\&quot;section\&quot;:\&quot;items\&quot;,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;part-no\&quot;,\&quot;section\&quot;:\&quot;items\&quot;,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;billing-vat-no\&quot;,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;shipping-date\&quot;,\&quot;type\&quot;:\&quot;date\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;vendor-email\&quot;,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;bank-name\&quot;,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;bank-account-no\&quot;,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;iban\&quot;,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;swift-code\&quot;,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;bank-addr\&quot;,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;bank-routing-no\&quot;,\&quot;type\&quot;:\&quot;id-no\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;tax-rate\&quot;,\&quot;type\&quot;:\&quot;number\&quot;},{\&quot;is_classification_field\&quot;:false,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;shipping-method\&quot;,\&quot;type\&quot;:\&quot;string\&quot;},{\&quot;is_classification_field\&quot;:true,\&quot;multi_valued\&quot;:false,\&quot;name\&quot;:\&quot;currency\&quot;,\&quot;type\&quot;:\&quot;string\&quot;}]}&quot;}]}]}}">
+                    <p4:DataExtractionScope.Extractors>
+                      <p5:MachineLearningExtractor SelectedMLSkill="{x:Null}" ApiKey="uiceEB6dBUaHw61wZAEKerI37G5rFBOs3FjSayYXwXZy3QNWf19vGiO1P4Ga6/GTC+sRPqH1W4ZUUMTN/2zI6g==" Configuration="{}{&quot;Endpoint&quot;:&quot;https://du.uipath.com/ie/invoices&quot;,&quot;ApiKey&quot;:&quot;uiceEB6dBUaHw61wZAEKerI37G5rFBOs3FjSayYXwXZy3QNWf19vGiO1P4Ga6/GTC+sRPqH1W4ZUUMTN/2zI6g==&quot;,&quot;AvailableMLSkills&quot;:[]}" DisplayName="20.a Machine Learning Extractor" Endpoint="https://du.uipath.com/ie/invoices" sap:VirtualizedContainerService.HintSize="292,24.8" sap2010:WorkflowViewState.IdRef="MachineLearningExtractor_1" PersistenceId="UI832cef263f7747ed9ae3be9f602bcd65" RetryOnFailure="True" Timeout="100000" UseServerSideOCR="False">
+                        <p5:MachineLearningExtractor.AvailableMLSkills>
+                          <sc:BindingList x:TypeArguments="x:String" AllowEdit="True" AllowNew="False" AllowRemove="True" RaiseListChangedEvents="True" />
+                        </p5:MachineLearningExtractor.AvailableMLSkills>
+                        <p5:MachineLearningExtractor.DocumentBounds>
+                          <InArgument x:TypeArguments="p7:ResultsDocumentBounds">
+                            <DelegateArgumentValue x:TypeArguments="p7:ResultsDocumentBounds">
+                              <DelegateInArgument x:TypeArguments="p7:ResultsDocumentBounds" Name="DocumentBounds" />
+                            </DelegateArgumentValue>
+                          </InArgument>
+                        </p5:MachineLearningExtractor.DocumentBounds>
+                        <p5:MachineLearningExtractor.DocumentObjectModel>
+                          <InArgument x:TypeArguments="p3:Document">
+                            <DelegateArgumentValue x:TypeArguments="p3:Document">
+                              <DelegateInArgument x:TypeArguments="p3:Document" Name="DocumentObjectModel" />
+                            </DelegateArgumentValue>
+                          </InArgument>
+                        </p5:MachineLearningExtractor.DocumentObjectModel>
+                        <p5:MachineLearningExtractor.DocumentPath>
+                          <InArgument x:TypeArguments="x:String">
+                            <DelegateArgumentValue x:TypeArguments="x:String">
+                              <DelegateInArgument x:TypeArguments="x:String" Name="DocumentPath" />
+                            </DelegateArgumentValue>
+                          </InArgument>
+                        </p5:MachineLearningExtractor.DocumentPath>
+                        <p5:MachineLearningExtractor.DocumentText>
+                          <InArgument x:TypeArguments="x:String">
+                            <DelegateArgumentValue x:TypeArguments="x:String">
+                              <DelegateInArgument x:TypeArguments="x:String" Name="DocumentText" />
+                            </DelegateArgumentValue>
+                          </InArgument>
+                        </p5:MachineLearningExtractor.DocumentText>
+                        <p5:MachineLearningExtractor.ExtractorDocumentType>
+                          <InArgument x:TypeArguments="p6:ExtractorDocumentType">
+                            <DelegateArgumentValue x:TypeArguments="p6:ExtractorDocumentType">
+                              <DelegateInArgument x:TypeArguments="p6:ExtractorDocumentType" Name="ExtractorDocumentType" />
+                            </DelegateArgumentValue>
+                          </InArgument>
+                        </p5:MachineLearningExtractor.ExtractorDocumentType>
+                        <p5:MachineLearningExtractor.ExtractorResult>
+                          <OutArgument x:TypeArguments="p6:ExtractorResult">
+                            <DelegateArgumentReference x:TypeArguments="p6:ExtractorResult">
+                              <DelegateOutArgument x:TypeArguments="p6:ExtractorResult" Name="ExtractorResult" />
+                            </DelegateArgumentReference>
+                          </OutArgument>
+                        </p5:MachineLearningExtractor.ExtractorResult>
+                        <p5:MachineLearningExtractor.PredictionId>
+                          <InArgument x:TypeArguments="x:String">
+                            <DelegateArgumentValue x:TypeArguments="x:String">
+                              <DelegateInArgument x:TypeArguments="x:String" Name="PredictionId" />
+                            </DelegateArgumentValue>
+                          </InArgument>
+                        </p5:MachineLearningExtractor.PredictionId>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </p5:MachineLearningExtractor>
+                    </p4:DataExtractionScope.Extractors>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </p4:DataExtractionScope>
+                  <p:CreateDocumentValidationAction ActionCatalog="{x:Null}" FieldsValidationConfidence="{x:Null}" TimeoutMs="{x:Null}" ActionOutput="[action]" ActionPriority="Medium" ActionTitle="[arrclassificationResult(0).DocumentTypeId.Split(&quot;.&quot;)(2)]" AutomaticExtractionResults="[extractedResult]" BucketName="[idictAssets(&quot;&quot;).ToString]" DisplayMode="Classic" DisplayName="20.a Create Document Validation Action" DocumentObjectModel="[DOM]" DocumentPath="[CurrentFile.FullName]" DocumentText="[strDocText]" EnableRTLControls="False" FolderPath="[idictAssets(&quot;&quot;).ToString]" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="CreateDocumentValidationAction_1" RetryOnFailure="True" ShowOnlyRelevantPageRange="True" Taxonomy="[taxonomy]">
+                    <p:CreateDocumentValidationAction.BucketFolderPath>
+                      <InArgument x:TypeArguments="x:String">
+                        <Literal x:TypeArguments="x:String" Value="" />
+                      </InArgument>
+                    </p:CreateDocumentValidationAction.BucketFolderPath>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </p:CreateDocumentValidationAction>
+                  <upat:AssignTasks FailedTaskAssignments="{x:Null}" Group="{x:Null}" TaskUserAssignments="{x:Null}" TimeoutMs="{x:Null}" DisplayName="20.a Assign Tasks to a specific Person" EnableMultipleAssignments="False" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="AssignTasks_1" MigrateV144="False" TaskAssignmentType="Assign" TaskId="[CINt(action.Id)]" UserNameOrEmail="[idictAssets(&quot;&quot;).ToString]">
+                    <upat:AssignTasks.AssignmentCriteria>
+                      <upat:Criteria Description="SingleUserDescription" Id="SingleUser" Name="Activity_AssignTasks_AssignmentCriteria_SingleUserName" />
+                    </upat:AssignTasks.AssignmentCriteria>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </upat:AssignTasks>
+                  <ui:DeserializeJson x:TypeArguments="njl:JObject" JsonSample="{x:Null}" Settings="{x:Null}" DisplayName="20.a Deserialize action Data" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="DeserializeJson`1_1" JsonObject="[jobjActionResult]" JsonString="[JsonConvert.SerializeObject(action.Data)]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:DeserializeJson>
+                  <Assign DisplayName="20.a Assign - data of task" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="Assign_3">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="x:String">[dictQueueData(arrclassificationResult(0).DocumentTypeId.Split(".")(2))]</OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="x:String">[(New Dictionary(Of String, String) From {{"Task ID", action.Id.ToString()},{"File Prefix", jobjActionResult.First.First.ToString.Split("\")(0)}}).ToString()]</InArgument>
+                    </Assign.Value>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </Assign>
+                  <ui:DeleteFileX DisplayName="20.a Delete Current File" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="DeleteFileX_1" Path="[CurrentFile.FullName]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:DeleteFileX>
+                  <ui:AddLogFields DisplayName="20.a Add Log Fields" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="AddLogFields_1">
+                    <ui:AddLogFields.Fields>
+                      <InArgument x:TypeArguments="x:String" x:Key="Document Type">[arrclassificationResult(0).DocumentTypeId.Split(".")(2)]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="Action Id">[action.Id.ToString]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="Storage Files Prefix">[jobjActionResult.First.First.ToString.Split("\")(0)]</InArgument>
+                    </ui:AddLogFields.Fields>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:AddLogFields>
+                  <ui:LogMessage DisplayName="20.a Info Log Task make" sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Task maked for current Document.&quot;]">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:LogMessage>
+                </Sequence>
+              </ActivityAction>
+            </ui:ForEachFileX.Body>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:ForEachFileX>
+          <uwaj:SerializeJson Settings="{x:Null}" DisplayName="20.a Serialize JSON Queue Data" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="SerializeJson_2" InputObject="[dictQueueData]" Result="[strQueueData]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </uwaj:SerializeJson>
+          <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="20.a Add Queue Item for Current Mail" FolderPath="[idictAssets(&quot;&quot;).ToString]" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[idictAssets(&quot;&quot;).ToString]">
+            <ui:AddQueueItem.ItemInformation>
+              <InArgument x:TypeArguments="x:String" x:Key="Mail Id">[imailMessage.Headers("Message Id")]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="Document Data">[strQueueData]</InArgument>
+            </ui:AddQueueItem.ItemInformation>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:AddQueueItem>
+          <ui:LogMessage DisplayName="20.a Info Log Message - Queue data uploaded" sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Data uploaded on Queue.&quot;]">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:LogMessage>
+        </Sequence>
+      </TryCatch.Try>
+      <TryCatch.Catches>
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="422.4,301.6" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ActivityAction x:TypeArguments="s:Exception">
+            <ActivityAction.Argument>
+              <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+            </ActivityAction.Argument>
+            <Sequence DisplayName="20.a Delete all attachemtns" sap:VirtualizedContainerService.HintSize="416,230.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <ui:ForEachFileX DisplayName="20.a For Each File in Folder delete it" Folder="[idictAssets(&quot;&quot;).ToString]" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="ForEachFileX_2" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+                <ui:ForEachFileX.Body>
+                  <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
+                    <ActivityAction.Argument1>
+                      <DelegateInArgument x:TypeArguments="si:FileInfo" Name="CurrentFile" />
+                    </ActivityAction.Argument1>
+                    <ActivityAction.Argument2>
+                      <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
+                    </ActivityAction.Argument2>
+                    <Sequence DisplayName="20.a Delete Current File" sap:VirtualizedContainerService.HintSize="416,24.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ui:DeleteFileX DisplayName="20.a Delete File" sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="DeleteFileX_2" Path="[CurrentFile.FullName]">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                      </ui:DeleteFileX>
+                    </Sequence>
+                  </ActivityAction>
+                </ui:ForEachFileX.Body>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </ui:ForEachFileX>
+              <Throw DisplayName="20.a Throw -  Task Creation Error" Exception="[New SystemException(&quot;Error to create task for this mail documents.&quot;)]" sap:VirtualizedContainerService.HintSize="382.4,113.6" sap2010:WorkflowViewState.IdRef="Throw_1" />
+            </Sequence>
+          </ActivityAction>
+        </Catch>
+      </TryCatch.Catches>
+    </TryCatch>
+  </Sequence>
+</Activity>

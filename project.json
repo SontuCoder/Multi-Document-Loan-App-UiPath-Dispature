@@ -13,7 +13,7 @@
     "UiPath.Persistence.Activities": "[1.7.2]",
     "UiPath.System.Activities": "[25.8.1]",
     "UiPath.UIAutomation.Activities": "[25.10.12]",
-    "UiPath.WebAPI.Activities": "[1.20.1]"
+    "UiPath.WebAPI.Activities": "[2.3.0]"
   },
   "webServices": [],
   "entitiesStores": [],
@@ -26,7 +26,7 @@
     "isPausable": true,
     "isAttended": false,
     "requiresUserInteraction": true,
-    "supportsPersistence": false,
+    "supportsPersistence": true,
     "workflowSerialization": "NewtonsoftJson",
     "excludedLoggedData": [
       "Private:*",

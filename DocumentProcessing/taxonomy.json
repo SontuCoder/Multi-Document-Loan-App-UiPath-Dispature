@@ -3,13 +3,8 @@
   "DocumentTypes": [],
   "Groups": [
     {
-      "Name": "Loan Document",
-      "Categories": [
-        "AadharCard",
-        "PanCard",
-        "LoanForm",
-        "SalaryShlip"
-      ]
+      "Name": "Loan Processing",
+      "Categories": []
     }
   ],
   "SupportedLanguages": [
