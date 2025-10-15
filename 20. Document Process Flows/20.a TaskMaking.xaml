@@ -157,7 +157,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="_20_a_TaskMaking" sap:VirtualizedContainerService.HintSize="892.0000000000001,669.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="_20_a_TaskMaking" sap:VirtualizedContainerService.HintSize="790.4000000000001,858.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="p8:DocumentTaxonomy" Name="taxonomy" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dictQueueData" />
@@ -168,7 +168,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="20.a Try Catch - Handle Task creating" sap:VirtualizedContainerService.HintSize="452.8,646.4" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="20.a Try Catch - Handle Task creating" sap:VirtualizedContainerService.HintSize="523.2,835.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
         <Sequence DisplayName="20.a Make task for all Documents" sap:VirtualizedContainerService.HintSize="416,392" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
@@ -198,7 +198,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <ui:ForEachFileX DisplayName="20.a For Each File in Folder - Make task" Folder="[idictAssets(&quot;Temp Folder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+          <ui:ForEachFileX DisplayName="20.a For Each File in Folder - Make task" Folder="[idictAssets(&quot;L1 Attachment Folder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
             <ui:ForEachFileX.Body>
               <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
                 <ActivityAction.Argument1>
@@ -364,7 +364,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </p4:DataExtractionScope>
-                  <p:CreateDocumentValidationAction ActionCatalog="{x:Null}" FieldsValidationConfidence="{x:Null}" TimeoutMs="{x:Null}" ActionOutput="[action]" ActionPriority="Medium" ActionTitle="[arrclassificationResult(0).DocumentTypeId.Split(&quot;.&quot;)(2)]" AutomaticExtractionResults="[extractedResult]" BucketName="[idictAssets(&quot;&quot;).ToString]" DisplayMode="Classic" DisplayName="20.a Create Document Validation Action" DocumentObjectModel="[DOM]" DocumentPath="[CurrentFile.FullName]" DocumentText="[strDocText]" EnableRTLControls="False" FolderPath="[idictAssets(&quot;&quot;).ToString]" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="CreateDocumentValidationAction_1" RetryOnFailure="True" ShowOnlyRelevantPageRange="True" Taxonomy="[taxonomy]">
+                  <p:CreateDocumentValidationAction ActionCatalog="{x:Null}" FieldsValidationConfidence="{x:Null}" TimeoutMs="{x:Null}" ActionOutput="[action]" ActionPriority="Medium" ActionTitle="[arrclassificationResult(0).DocumentTypeId.Split(&quot;.&quot;)(2)]" AutomaticExtractionResults="[extractedResult]" BucketName="[idictAssets(&quot;L1 Action Bucket Name&quot;).ToString]" DisplayMode="Classic" DisplayName="20.a Create Document Validation Action" DocumentObjectModel="[DOM]" DocumentPath="[CurrentFile.FullName]" DocumentText="[strDocText]" EnableRTLControls="False" FolderPath="[idictAssets(&quot;L1 Action Folder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="CreateDocumentValidationAction_1" RetryOnFailure="True" ShowOnlyRelevantPageRange="True" Taxonomy="[taxonomy]">
                     <p:CreateDocumentValidationAction.BucketFolderPath>
                       <InArgument x:TypeArguments="x:String">
                         <Literal x:TypeArguments="x:String" Value="" />
@@ -377,7 +377,7 @@
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
                   </p:CreateDocumentValidationAction>
-                  <upat:AssignTasks FailedTaskAssignments="{x:Null}" Group="{x:Null}" TaskUserAssignments="{x:Null}" TimeoutMs="{x:Null}" DisplayName="20.a Assign Tasks to a specific Person" EnableMultipleAssignments="False" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="AssignTasks_1" MigrateV144="False" TaskAssignmentType="Assign" TaskId="[CINt(action.Id)]" UserNameOrEmail="[idictAssets(&quot;&quot;).ToString]">
+                  <upat:AssignTasks FailedTaskAssignments="{x:Null}" Group="{x:Null}" TaskUserAssignments="{x:Null}" TimeoutMs="{x:Null}" DisplayName="20.a Assign Tasks to a specific Person" EnableMultipleAssignments="False" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="AssignTasks_1" MigrateV144="False" TaskAssignmentType="Assign" TaskId="[CINt(action.Id)]" UserNameOrEmail="[idictAssets(&quot;L1 Action assign Mail&quot;).ToString]">
                     <upat:AssignTasks.AssignmentCriteria>
                       <upat:Criteria Description="SingleUserDescription" Id="SingleUser" Name="Activity_AssignTasks_AssignmentCriteria_SingleUserName" />
                     </upat:AssignTasks.AssignmentCriteria>
@@ -457,7 +457,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </uwaj:SerializeJson>
-          <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="20.a Add Queue Item for Current Mail" FolderPath="[idictAssets(&quot;&quot;).ToString]" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[idictAssets(&quot;&quot;).ToString]">
+          <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="20.a Add Queue Item for Current Mail" FolderPath="[idictAssets(&quot;L1 Orchestrator Name&quot;).ToString]" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[idictAssets(&quot;L1 Action Queue&quot;).ToString]">
             <ui:AddQueueItem.ItemInformation>
               <InArgument x:TypeArguments="x:String" x:Key="Mail Id">[imailMessage.Headers("Message Id")]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="Document Data">[strQueueData]</InArgument>
@@ -480,10 +480,10 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="419.2,23.2" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="489.6,648" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -491,13 +491,13 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="20.a Delete all attachemtns" sap:VirtualizedContainerService.HintSize="416,230.4" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence DisplayName="20.a Delete all attachemtns" sap:VirtualizedContainerService.HintSize="483.2,576.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:ForEachFileX DisplayName="20.a For Each File in Folder delete it" Folder="[idictAssets(&quot;&quot;).ToString]" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="ForEachFileX_2" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+              <ui:ForEachFileX DisplayName="20.a For Each File in Folder delete it" Folder="[idictAssets(&quot;L1 Attachment Folder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="449.6,403.2" sap2010:WorkflowViewState.IdRef="ForEachFileX_2" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
                 <ui:ForEachFileX.Body>
                   <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
                     <ActivityAction.Argument1>
@@ -506,10 +506,10 @@
                     <ActivityAction.Argument2>
                       <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
                     </ActivityAction.Argument2>
-                    <Sequence DisplayName="20.a Delete Current File" sap:VirtualizedContainerService.HintSize="416,24.8" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                    <Sequence DisplayName="20.a Delete Current File" sap:VirtualizedContainerService.HintSize="416,108" sap2010:WorkflowViewState.IdRef="Sequence_5">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                          <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                           <x:Boolean x:Key="IsPinned">False</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
@@ -526,12 +526,12 @@
                 </ui:ForEachFileX.Body>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:ForEachFileX>
-              <Throw DisplayName="20.a Throw -  Task Creation Error" Exception="[New SystemException(&quot;Error to create task for this mail documents.&quot;)]" sap:VirtualizedContainerService.HintSize="382.4,113.6" sap2010:WorkflowViewState.IdRef="Throw_1" />
+              <Throw DisplayName="20.a Throw -  Task Creation Error" Exception="[New SystemException(&quot;Error to create task for this mail documents.&quot;)]" sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Throw_1" />
             </Sequence>
           </ActivityAction>
         </Catch>
