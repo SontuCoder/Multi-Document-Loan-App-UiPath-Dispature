@@ -157,7 +157,7 @@
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="_20_a_TaskMaking" sap:VirtualizedContainerService.HintSize="790.4000000000001,1944" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="_20_a_TaskMaking" sap:VirtualizedContainerService.HintSize="807.2,658.84" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="p8:DocumentTaxonomy" Name="taxonomy" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, x:String)" Name="dictQueueData" />
@@ -168,9 +168,9 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="20.a Try Catch - Handle Task creating" sap:VirtualizedContainerService.HintSize="615.2,1920.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="20.a Try Catch - Handle Task creating" sap:VirtualizedContainerService.HintSize="456,423.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <TryCatch.Try>
-        <Sequence DisplayName="20.a Make task for all Documents" sap:VirtualizedContainerService.HintSize="578.4,1666.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="20.a Make task for all Documents" sap:VirtualizedContainerService.HintSize="578.4,1892.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -184,7 +184,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </p:LoadTaxonomy>
-          <Assign DisplayName="20.a Assign - Queue Data" sap:VirtualizedContainerService.HintSize="544.8,56.8" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign DisplayName="20.a Assign - Queue Data" sap:VirtualizedContainerService.HintSize="544.8,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dictQueueData]</OutArgument>
             </Assign.To>
@@ -193,7 +193,7 @@
             </Assign.Value>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -457,14 +457,14 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </uwaj:SerializeJson>
-          <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="20.a Add Queue Item for Current Mail" FolderPath="[idictAssets(&quot;L1 Orchestrator Name&quot;).ToString]" sap:VirtualizedContainerService.HintSize="544.8,56.8" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[idictAssets(&quot;L1 Action Queue&quot;).ToString]">
+          <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="20.a Add Queue Item for Current Mail" FolderPath="[idictAssets(&quot;L1 Orchestrator Name&quot;).ToString]" sap:VirtualizedContainerService.HintSize="544.8,226.4" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[idictAssets(&quot;L1 Action Queue&quot;).ToString]">
             <ui:AddQueueItem.ItemInformation>
               <InArgument x:TypeArguments="x:String" x:Key="Mail Id">[imailMessage.Headers("Message Id")]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="Document Data">[strQueueData]</InArgument>
             </ui:AddQueueItem.ItemInformation>
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
@@ -480,10 +480,10 @@
         </Sequence>
       </TryCatch.Try>
       <TryCatch.Catches>
-        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="581.6,23.2" sap2010:WorkflowViewState.IdRef="Catch`1_1">
+        <Catch x:TypeArguments="s:Exception" sap:VirtualizedContainerService.HintSize="422.4,236" sap2010:WorkflowViewState.IdRef="Catch`1_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               <x:Boolean x:Key="IsPinned">False</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
@@ -491,13 +491,13 @@
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="20.a Delete all attachemtns" sap:VirtualizedContainerService.HintSize="483.2,536.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence DisplayName="20.a Delete all attachemtns" sap:VirtualizedContainerService.HintSize="416,164.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:ForEachFileX DisplayName="20.a For Each File in Folder delete it" Folder="[idictAssets(&quot;L1 Attachment Folder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="449.6,403.2" sap2010:WorkflowViewState.IdRef="ForEachFileX_2" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+              <ui:ForEachFileX DisplayName="20.a For Each File in Folder delete it" Folder="[idictAssets(&quot;L1 Attachment Folder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="382.4,56.8" sap2010:WorkflowViewState.IdRef="ForEachFileX_2" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
                 <ui:ForEachFileX.Body>
                   <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
                     <ActivityAction.Argument1>
@@ -526,12 +526,19 @@
                 </ui:ForEachFileX.Body>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
               </ui:ForEachFileX>
-              <Throw DisplayName="20.a Throw -  Task Creation Error" Exception="[New SystemException(&quot;Error to create task for this mail documents.&quot;)]" sap:VirtualizedContainerService.HintSize="449.6,113.6" sap2010:WorkflowViewState.IdRef="Throw_1" />
+              <Throw DisplayName="20.a Throw -  Task Creation Error" Exception="[New SystemException(&quot;Error to create task for this mail documents.&quot;)]" sap:VirtualizedContainerService.HintSize="382.4,48" sap2010:WorkflowViewState.IdRef="Throw_1">
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+              </Throw>
             </Sequence>
           </ActivityAction>
         </Catch>
