@@ -87,7 +87,7 @@
       <AssemblyReference>UiPath.Mail</AssemblyReference>
     </sco1:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap2010:Annotation.AnnotationText="Manage the retrying mechanism for the framework and it is invoked in SetTransactionStatus.xaml when a system exception occurs. &#xA;The retrying method is based on the configurations defined in Config.xlsx." DisplayName="Retry Current Transaction" sap:VirtualizedContainerService.HintSize="807.2,659.2" sap2010:WorkflowViewState.IdRef="Flowchart_7">
+  <Flowchart sap2010:Annotation.AnnotationText="Manage the retrying mechanism for the framework and it is invoked in SetTransactionStatus.xaml when a system exception occurs. &#xA;The retrying method is based on the configurations defined in Config.xlsx." DisplayName="Retry Current Transaction" sap:VirtualizedContainerService.HintSize="880.8000000000001,563.2" sap2010:WorkflowViewState.IdRef="Flowchart_7">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -244,7 +244,7 @@
                                   <av:Size x:Key="ShapeSize">110.4,70.4</av:Size>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <TryCatch DisplayName="10.f Try Catch - Handle Send and Move Mail SYS" sap:VirtualizedContainerService.HintSize="452.8,783.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                              <TryCatch DisplayName="10.f Try Catch - Handle Send and Move Mail SYS" sap:VirtualizedContainerService.HintSize="452.8,683.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -252,14 +252,14 @@
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
                                 <TryCatch.Try>
-                                  <Sequence DisplayName="10.f Sequence - Send mail and move mail SYS" sap:VirtualizedContainerService.HintSize="416,552" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                                  <Sequence DisplayName="10.f Sequence - Send mail and move mail SYS" sap:VirtualizedContainerService.HintSize="416,452" sap2010:WorkflowViewState.IdRef="Sequence_3">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <ui:SendOutlookMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" UseRichTextEditor="{x:Null}" Account="[idictAssets(&quot;L1 Mail Input Account&quot;).ToString]" Body="[idictMailTemplates(&quot;&quot;).ToString]" ConnectionMode="LegacyConfiguration" ContinueOnError="True" DisplayName="10.f Send Success Mail Loan Applicant" sap:VirtualizedContainerService.HintSize="382.4,326.4" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="True" IsDraft="False" Sensitivity="Normal" Subject="[idictAssets(&quot;L1 System Exception Customer Mail&quot;).ToString]" To="[idictAssets(&quot;L1 Help Desk Mail Account&quot;).ToString]" UseISConnection="False">
+                                    <ui:SendOutlookMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" ReplyTo="{x:Null}" TimeoutMS="{x:Null}" UseRichTextEditor="{x:Null}" Account="[idictAssets(&quot;L1 Mail Input Account&quot;).ToString]" Body="[idictMailTemplates(&quot;L1 SYS Exception Mail Template&quot;).ToString]" ConnectionMode="LegacyConfiguration" ContinueOnError="True" DisplayName="10.f Send Success Mail Loan Applicant" sap:VirtualizedContainerService.HintSize="382.4,226.4" sap2010:WorkflowViewState.IdRef="SendOutlookMail_1" Importance="Normal" IsBodyHtml="False" IsDraft="False" Sensitivity="Normal" Subject="[idictAssets(&quot;L1 System Exception Customer Mail&quot;).ToString]" To="[idictAssets(&quot;L1 Help Desk Mail Account&quot;).ToString]" UseISConnection="False">
                                       <ui:SendOutlookMail.ConnectionDetailsBackupSlot>
                                         <usau:BackupSlot x:TypeArguments="umae:ConnectionDetails" StoredValue="{x:Null}">
                                           <usau:BackupSlot.BackupValues>
