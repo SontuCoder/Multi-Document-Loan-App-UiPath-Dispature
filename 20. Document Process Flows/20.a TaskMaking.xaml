@@ -161,7 +161,7 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="_20_a_TaskMaking" sap:VirtualizedContainerService.HintSize="683.2,3138.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="_20_a_TaskMaking" sap:VirtualizedContainerService.HintSize="684.0000000000001,3100" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="p8:DocumentTaxonomy" Name="taxonomy" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))" Name="dictQueueData" />
@@ -172,7 +172,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <TryCatch DisplayName="20.a Try Catch - Handle Task creating" sap:VirtualizedContainerService.HintSize="616,3115.2" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+    <TryCatch DisplayName="20.a Try Catch - Handle Task creating" sap:VirtualizedContainerService.HintSize="616,3076.8" sap2010:WorkflowViewState.IdRef="TryCatch_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -180,7 +180,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <TryCatch.Try>
-        <Sequence DisplayName="20.a Make task for all Documents" sap:VirtualizedContainerService.HintSize="579.2,2860.8" sap2010:WorkflowViewState.IdRef="Sequence_3">
+        <Sequence DisplayName="20.a Make task for all Documents" sap:VirtualizedContainerService.HintSize="579.2,2822.4" sap2010:WorkflowViewState.IdRef="Sequence_3">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -194,7 +194,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </p:LoadTaxonomy>
-          <Assign DisplayName="20.a Assign - Queue Data" sap:VirtualizedContainerService.HintSize="545.6,112.8" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign DisplayName="20.a Assign - Queue Data" sap:VirtualizedContainerService.HintSize="545.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))">[dictQueueData]</OutArgument>
             </Assign.To>
@@ -208,7 +208,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
           </Assign>
-          <ui:ForEachFileX DisplayName="20.a For Each File in Folder - Make task" Folder="[idictAssets(&quot;L1 Attachment Folder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="545.6,2116.8" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
+          <ui:ForEachFileX DisplayName="20.a For Each File in Folder - Make task" Folder="[idictAssets(&quot;L1 Attachment Folder&quot;).ToString]" sap:VirtualizedContainerService.HintSize="545.6,2077.6" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
             <ui:ForEachFileX.Body>
               <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
                 <ActivityAction.Argument1>
@@ -217,7 +217,7 @@
                 <ActivityAction.Argument2>
                   <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
                 </ActivityAction.Argument2>
-                <Sequence DisplayName="20.a Make Task for each Documents" sap:VirtualizedContainerService.HintSize="512,1821.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence DisplayName="20.a Make Task for each Documents" sap:VirtualizedContainerService.HintSize="512,1782.4" sap2010:WorkflowViewState.IdRef="Sequence_2">
                   <Sequence.Variables>
                     <Variable x:TypeArguments="p3:Document" Name="DOM" />
                     <Variable x:TypeArguments="x:String" Name="strDocText" />
@@ -233,7 +233,7 @@
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <p:DigitizeDocument ApplyOcrMigrated="True" ApplyOcrOnPdf="Auto" DegreeOfParallelism="-1" DetectCheckboxes="True" DisplayName="20.a Digitize Currect Document" DocumentObjectModel="[DOM]" DocumentPath="[CurrentFile.FullName]" DocumentText="[strDocText]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="478.4,372" sap2010:WorkflowViewState.IdRef="DigitizeDocument_1">
+                  <p:DigitizeDocument ApplyOcrMigrated="True" ApplyOcrOnPdf="Auto" DegreeOfParallelism="-1" DetectCheckboxes="True" DisplayName="20.a Digitize Currect Document" DocumentObjectModel="[DOM]" DocumentPath="[CurrentFile.FullName]" DocumentText="[strDocText]" ForceApplyOCR="False" sap:VirtualizedContainerService.HintSize="478.4,332" sap2010:WorkflowViewState.IdRef="DigitizeDocument_1">
                     <p:DigitizeDocument.OCREngine>
                       <ActivityFunc x:TypeArguments="sd:Image, x:String, scg:IEnumerable(scg:KeyValuePair(sd1:Rectangle, x:String))">
                         <ActivityFunc.Argument1>
@@ -254,7 +254,7 @@
                   </p:DigitizeDocument>
                   <p1:ClassifyDocumentScope ClassificationResults="[arrclassificationResult]" DisplayName="20.a Classify Document Scope for Current Document" DocumentObjectModel="[DOM]" DocumentPath="[CurrentFile.FullName]" DocumentText="[strDocText]" sap:VirtualizedContainerService.HintSize="478.4,473.6" sap2010:WorkflowViewState.IdRef="ClassifyDocumentScope_1" Taxonomy="[taxonomy]" TaxonomyConfiguration="{}{&quot;TaxonomyMappings&quot;:{&quot;UI257f3a12998d421e8d4bcd2449ab6106&quot;:{&quot;DocumentTypeMappings&quot;:{&quot;LoanProcessing.NoCategory.AadharCard&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;LoanProcessing.NoCategory.AadharCard&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;LoanProcessing.NoCategory.PanCard&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;LoanProcessing.NoCategory.PanCard&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;LoanProcessing.NoCategory.LoanApplication&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;LoanProcessing.NoCategory.LoanApplication&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true},&quot;LoanProcessing.NoCategory.SalarySlip&quot;:{&quot;OriginalDocumentTypeId&quot;:&quot;LoanProcessing.NoCategory.SalarySlip&quot;,&quot;ClassifierDocumentTypeId&quot;:null,&quot;IsDocumentTypeIdMapped&quot;:true}}}},&quot;ClassifierMinimumConfidence&quot;:{&quot;UI257f3a12998d421e8d4bcd2449ab6106&quot;:&quot;50&quot;},&quot;DocumentTypesByPersistenceId&quot;:{&quot;UI257f3a12998d421e8d4bcd2449ab6106&quot;:[]}}">
                     <p1:ClassifyDocumentScope.Classifiers>
-                      <p1:KeywordBasedClassifier HumanValidatedData="{x:Null}" LearningData="{x:Null}" OriginalDocumentObjectModel="{x:Null}" OriginalDocumentPath="{x:Null}" OriginalDocumentText="{x:Null}" DisplayName="20.a Keyword Based Classifier for Classify document type" sap:VirtualizedContainerService.HintSize="281.6,115.2" sap2010:WorkflowViewState.IdRef="KeywordBasedClassifier_1" LearningFilePath="DocumentProcessing\KeywordClassifier.json" PersistenceId="UI257f3a12998d421e8d4bcd2449ab6106">
+                      <p1:KeywordBasedClassifier HumanValidatedData="{x:Null}" LearningData="{x:Null}" OriginalDocumentObjectModel="{x:Null}" OriginalDocumentPath="{x:Null}" OriginalDocumentText="{x:Null}" DisplayName="20.a Keyword Based Classifier for Classify document type" sap:VirtualizedContainerService.HintSize="305.6,115.2" sap2010:WorkflowViewState.IdRef="KeywordBasedClassifier_1" LearningFilePath="DocumentProcessing\KeywordClassifier.json" PersistenceId="UI257f3a12998d421e8d4bcd2449ab6106">
                         <p1:KeywordBasedClassifier.ClassifierResult>
                           <OutArgument x:TypeArguments="p2:ClassifierResult">
                             <DelegateArgumentReference x:TypeArguments="p2:ClassifierResult">
@@ -437,7 +437,7 @@
                       </scg:List>
                     </ui:MultipleAssign.AssignOperations>
                   </ui:MultipleAssign>
-                  <Assign DisplayName="20.a Assign - data of task" sap:VirtualizedContainerService.HintSize="478.4,112.8" sap2010:WorkflowViewState.IdRef="Assign_3">
+                  <Assign DisplayName="20.a Assign - data of task" sap:VirtualizedContainerService.HintSize="478.4,113.6" sap2010:WorkflowViewState.IdRef="Assign_3">
                     <Assign.To>
                       <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:String)">[dictQueueData(arrclassificationResult(0).DocumentTypeId.Split(".")(2))]</OutArgument>
                     </Assign.To>
@@ -500,7 +500,7 @@
           </uwaj:SerializeJson>
           <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="20.a Add Queue Item for Current Mail" FolderPath="[idictAssets(&quot;L1 Orchestrator Name&quot;).ToString]" sap:VirtualizedContainerService.HintSize="545.6,226.4" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[idictAssets(&quot;L1 Action Queue&quot;).ToString]">
             <ui:AddQueueItem.ItemInformation>
-              <InArgument x:TypeArguments="x:String" x:Key="Mail Id">[imailMessage.Headers("Message Id")]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="Mail Id">[imailMessage.Headers("Message-ID")]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="Document Data">[strQueueData]</InArgument>
             </ui:AddQueueItem.ItemInformation>
             <sap:WorkflowViewStateService.ViewState>
