@@ -161,7 +161,7 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="_20_a_TaskMaking" sap:VirtualizedContainerService.HintSize="787.2,3100" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="_20_a_TaskMaking" sap:VirtualizedContainerService.HintSize="683.2,3100" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="p8:DocumentTaxonomy" Name="taxonomy" />
       <Variable x:TypeArguments="scg:Dictionary(x:String, scg:Dictionary(x:String, x:String))" Name="dictQueueData" />
@@ -500,7 +500,7 @@
           </uwaj:SerializeJson>
           <ui:AddQueueItem ServiceBaseAddress="{x:Null}" TimeoutMS="{x:Null}" DisplayName="20.a Add Queue Item for Current Mail" FolderPath="[idictAssets(&quot;L1 Orchestrator Name&quot;).ToString]" sap:VirtualizedContainerService.HintSize="545.6,226.4" sap2010:WorkflowViewState.IdRef="AddQueueItem_1" Priority="Normal" QueueType="[idictAssets(&quot;L1 Action Queue&quot;).ToString]">
             <ui:AddQueueItem.ItemInformation>
-              <InArgument x:TypeArguments="x:String" x:Key="Mail Id">[imailMessage.Headers("Message-ID")]</InArgument>
+              <InArgument x:TypeArguments="x:String" x:Key="Mail Id">[imailMessage.Headers("Uid").ToString]</InArgument>
               <InArgument x:TypeArguments="x:String" x:Key="Document Data">[strQueueData]</InArgument>
             </ui:AddQueueItem.ItemInformation>
             <sap:WorkflowViewStateService.ViewState>
